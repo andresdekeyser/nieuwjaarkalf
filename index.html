@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>Aftelkalender</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 60px;
+      background-color: #f5f5f5;
+    }
+
+    .logo {
+      width: 160px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    #countdown {
+      font-size: 40px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- LOGO -->
+  <img src="kalf.png" alt="Logo" class="logo">
+
+  <!-- TITEL -->
+  <h1> Nieuwjaar 2026 by T'kalf</h1>
+
+  <!-- AFTELLER -->
+  <div id="countdown"></div>
+
+  <!-- SCRIPT -->
+  <script>
+    const targetDate = new Date("2026-01-01 00:00:00").getTime();
+
+    setInterval(() => {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+
+      const dagen = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const uren = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minuten = Math.floor((diff / (1000 * 60)) % 60);
+      const seconden = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("countdown").innerHTML =
+        `${dagen} dagen ${uren} uur ${minuten} min ${seconden} sec`;
+    }, 1000);
+  </script>
+
+</body>
+</html>
